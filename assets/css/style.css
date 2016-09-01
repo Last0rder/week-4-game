@@ -1,3 +1,9 @@
+@font-face {
+    font-family: Trajan;
+    src: (trajanbold.ttf);
+}
+
 body {
+	font-family: Trajan;
 	background-color: black;
 }
