@@ -77,8 +77,13 @@ $(document).ready(function() {
 
 //sets player's current score to 0, generates random values for the target score between 19 and 120 and each rune between 1 and 12
 	function newGame() {
+		console.log(greenVal)
 		currentScore = 0;
 		$('#playerNum').html(currentScore);
+		greenVal = 0;
+		redVal = 0;
+		blueVal = 0;
+		blackVal = 0;
 		targetScore = Math.floor(Math.random()*101 + 19);
 		greenVal = Math.floor(Math.random()*12+1);
 		redVal = Math.floor(Math.random()*12+1);
@@ -89,13 +94,19 @@ $(document).ready(function() {
 		$('#red').attr("data-num", redVal)
 		$('#blue').attr("data-num", blueVal)
 		$('#black').attr("data-num", blackVal)
+		console.log(greenVal)
 	
 	} 
 
-	//activates when a rune is pressed
-	$('.button').on('click', function() {
+	newGame();
+	$('#green').attr("data-num", greenVal)
+	$('#red').attr("data-num", redVal)
+	$('#blue').attr("data-num", blueVal)
+	$('#black').attr("data-num", blackVal)
 
-		currentScore += $(this).data('num');
+	//activates when a rune is pressed
+	$('#green').on('click', function() {
+		currentScore += greenVal;
 		$('#playerNum').html(currentScore);
 		
 			if (currentScore == targetScore) {
@@ -117,6 +128,82 @@ $(document).ready(function() {
 			}//Closes loss
 
 	});//Closes button.on(click)
+
+	$('#red').on('click', function() {
+
+		currentScore += redVal;
+		$('#playerNum').html(currentScore);
+		
+			if (currentScore == targetScore) {
+				win.play();
+				alert("You Win!")
+				winCount++
+				$('#wins').html(winCount);
+				newGame();
+
+			}//Closes Win
+
+			if (currentScore > targetScore) {
+				lose.play();
+				alert("You Lose.")
+				lossCount++
+				$('#losses').html(lossCount);
+				newGame();
+
+			}//Closes loss
+
+	});//Closes button.on(click)
+
+$('#blue').on('click', function() {
+
+		currentScore += blueVal;
+		$('#playerNum').html(currentScore);
+		
+			if (currentScore == targetScore) {
+				win.play();
+				alert("You Win!")
+				winCount++
+				$('#wins').html(winCount);
+				newGame();
+
+			}//Closes Win
+
+			if (currentScore > targetScore) {
+				lose.play();
+				alert("You Lose.")
+				lossCount++
+				$('#losses').html(lossCount);
+				newGame();
+
+			}//Closes loss
+
+	});//Closes button.on(click)
+
+$('#black').on('click', function() {
+
+		currentScore += blackVal;
+		$('#playerNum').html(currentScore);
+		
+			if (currentScore == targetScore) {
+				win.play();
+				alert("You Win!")
+				winCount++
+				$('#wins').html(winCount);
+				newGame();
+
+			}//Closes Win
+
+			if (currentScore > targetScore) {
+				lose.play();
+				alert("You Lose.")
+				lossCount++
+				$('#losses').html(lossCount);
+				newGame();
+
+			}//Closes loss
+
+	});//Closes button.on(click)
+
 
 }); //Closes document.ready(function)
 
